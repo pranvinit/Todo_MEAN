@@ -4,7 +4,6 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { TodosResponse, TodoService } from '../todo.service';
 
 @Injectable({

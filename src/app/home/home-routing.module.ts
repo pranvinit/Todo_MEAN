@@ -12,6 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         component: ListComponent,
         resolve: { data: TodoResolverService },
       },

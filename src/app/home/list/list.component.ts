@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
     this.route.data.subscribe(({ data }) => {
-      console.log(data);
+      this.todos = data.todos;
     });
   }
 
