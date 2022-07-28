@@ -1,1 +1,7 @@
-<p>list works!</p>
+<div class="list">
+  <div class="todo" *ngFor="let todo of todos">
+    <h3>{{ todo.name }}</h3>
+    <span>{{ todo.description }}</span>
+    <span>{{ todo.updatedAt | date: "short" }}</span>
+  </div>
+</div>

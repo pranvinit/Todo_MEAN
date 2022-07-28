@@ -1,0 +1,11 @@
+<div *ngIf="alerts.length" class="alerts">
+  <div class="alert" *ngFor="let alert of alerts" [ngClass]="alert.type">
+    <span class="message">{{ alert.message }}</span>
+    <img
+      class="close"
+      (click)="handleClose(alert.id)"
+      src="/assets/close.png"
+      alt="close"
+    />
+  </div>
+</div>

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   }
 
   handleLogoClick() {
-    window.location.replace('/home/pending');
+    window.location.replace('/home');
   }
 
   handleLogout() {

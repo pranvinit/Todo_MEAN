@@ -1,1 +1,21 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <div class="types">
+    <span class="type"
+      ><a
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >All</a
+      ></span
+    >
+    <span class="type"
+      ><a routerLink="pending" routerLinkActive="active">Pending</a></span
+    >
+    <span class="type"
+      ><a routerLink="priority" routerLinkActive="active">Priority</a></span
+    >
+    <span class="type"
+      ><a routerLink="completed" routerLinkActive="active">Completed</a></span
+    >
+  </div>
+</div>

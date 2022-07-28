@@ -1,0 +1,56 @@
+@import "../../../partials/variables";
+
+.alerts {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99;
+
+  .alert {
+    width: 80%;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    animation: slide-in 5s ease-out forwards;
+
+    .close {
+      width: 20px;
+      cursor: pointer;
+    }
+  }
+
+  @keyframes slide-in {
+    0% {
+      transform: translateX(150%);
+    }
+    10% {
+      transform: translateX(0);
+    }
+    90% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(150%);
+    }
+  }
+
+  .success {
+    color: #000;
+    background-color: $success-green-bg;
+  }
+
+  .error {
+    color: #000;
+    background-color: $error-red-bg;
+  }
+}
