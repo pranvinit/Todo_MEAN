@@ -1,34 +1,32 @@
 <div class="navbar">
-  <div class="wrapper">
-    <img
-      (click)="handleLogoClick()"
-      src="/assets/logo.png"
-      alt="logo"
-      class="logo"
-    />
-    <ul class="navList">
-      <li>
-        <a
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          routerLink="/home"
-        >
-          Home</a
-        >
-      </li>
-      <li *ngIf="!user">
-        <a routerLinkActive="active" routerLink="/auth/register"> Register</a>
-      </li>
-      <li *ngIf="!user">
-        <a
-          routerLinkActive="active"
-          routerLink="/auth/login"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          Sign in</a
-        >
-      </li>
-      <li *ngIf="user" (click)="handleLogout()">Logout</li>
-    </ul>
-  </div>
+  <img
+    (click)="handleLogoClick()"
+    src="/assets/logo.png"
+    alt="logo"
+    class="logo"
+  />
+  <ul class="navList">
+    <li>
+      <a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/home"
+      >
+        Home</a
+      >
+    </li>
+    <li *ngIf="!user">
+      <a routerLinkActive="active" routerLink="/auth/register"> Register</a>
+    </li>
+    <li *ngIf="!user">
+      <a
+        routerLinkActive="active"
+        routerLink="/auth/login"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Sign in</a
+      >
+    </li>
+    <li *ngIf="user" (click)="handleLogout()">Logout</li>
+  </ul>
 </div>

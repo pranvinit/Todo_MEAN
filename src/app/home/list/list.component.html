@@ -1,7 +1,7 @@
 <div class="list">
-  <div class="todo" *ngFor="let todo of todos">
-    <h3>{{ todo.name }}</h3>
-    <span>{{ todo.description }}</span>
-    <span>{{ todo.updatedAt | date: "short" }}</span>
+  <div class="wrapper">
+    <ng-container *ngFor="let todo of todos">
+      <app-todo [todo]="todo"></app-todo>
+    </ng-container>
   </div>
 </div>

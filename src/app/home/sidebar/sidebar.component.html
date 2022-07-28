@@ -1,21 +1,28 @@
 <div class="sidebar">
   <div class="types">
-    <span class="type"
-      ><a
-        routerLink=""
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >All</a
-      ></span
+    <a
+      routerLink=""
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="type"
     >
-    <span class="type"
-      ><a routerLink="pending" routerLinkActive="active">Pending</a></span
+      <img src="/assets/sidebar/all.png" alt="all" class="icon" />
+      <span>All</span></a
     >
-    <span class="type"
-      ><a routerLink="priority" routerLinkActive="active">Priority</a></span
+    <a routerLink="pending" routerLinkActive="active" class="type">
+      <img src="/assets/sidebar/pending.png" alt="all" class="icon" />
+
+      <span>Pending</span></a
     >
-    <span class="type"
-      ><a routerLink="completed" routerLinkActive="active">Completed</a></span
+    <a routerLink="priority" routerLinkActive="active" class="type">
+      <img src="/assets/sidebar/priority.png" alt="all" class="icon" />
+
+      <span>Priority</span></a
+    >
+    <a routerLink="completed" routerLinkActive="active" class="type">
+      <img src="/assets/sidebar/completed.png" alt="all" class="icon" />
+
+      <span>Completed</span></a
     >
   </div>
 </div>

@@ -8,7 +8,7 @@ export interface Todo {
   name: string;
   description: string;
   completed: boolean;
-  priority: boolean;
+  priority: number;
   updatedAt: Date;
 }
 

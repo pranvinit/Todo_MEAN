@@ -1,6 +1,40 @@
-.sidebar {
-  width: 30%;
-  height: 100vh;
+@import "../../../partials/mixins";
+@import "../../../partials/variables";
 
-  background-color: transparent;
+:host {
+  flex: 1;
+}
+
+.sidebar {
+  height: 100%;
+
+  .types {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+    padding-top: 20px;
+
+    .type {
+      padding: 10px;
+      border-radius: 30px;
+      display: flex;
+      gap: 10px;
+      @include anchor-reset(#000);
+
+      .icon {
+        width: 30px;
+      }
+
+      span {
+        font-size: 1.3em;
+        font-weight: 700;
+      }
+
+      &:hover {
+        background-color: hsl(203, 89%, 93%);
+      }
+    }
+  }
 }
