@@ -2,3 +2,17 @@
   text-decoration: none;
   color: $color;
 }
+
+@mixin loader($width) {
+  aspect-ratio: 1;
+  width: $width;
+  border-radius: 50%;
+  background-color: red;
+  animation: load 0.5s linear infinite forwards;
+
+  @keyframes load {
+    to {
+      background-color: transparent;
+    }
+  }
+}

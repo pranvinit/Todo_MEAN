@@ -1,1 +1,63 @@
-<p>todo-form works!</p>
+<div class="modal" (click)="handleBack()">
+  <form
+    (click)="$event.stopPropagation()"
+    class="todoForm"
+    [ngClass]="{ back: backIntent }"
+    [formGroup]="todoForm"
+    (ngSubmit)="handleSubmit()"
+  >
+    <span (click)="handleBack()" class="close"
+      ><img src="/assets/close.png" alt="close"
+    /></span>
+    <h2>{{ operation.charAt(0).toUpperCase() + operation.slice(1) }} Todo</h2>
+    <app-form-input
+      size="large"
+      [control]="name"
+      placeholder="Todo name"
+    ></app-form-input>
+    <app-form-input
+      [control]="description"
+      placeholder="Todo description"
+      type="textarea"
+      size="large"
+    ></app-form-input>
+    <div class="bottom">
+      <div class="status">
+        <span>Status:</span>
+        <app-form-input
+          [control]="completed"
+          type="checkbox"
+          [checked]="false"
+        ></app-form-input>
+      </div>
+      <div class="priorityWrapper">
+        <span
+          (click)="handlePriorityClick(0)"
+          [ngClass]="{ active: priority.value === 0 }"
+          class="priority"
+        ></span>
+        <span
+          (click)="handlePriorityClick(1)"
+          [ngClass]="{ active: priority.value === 1 }"
+          class="priority"
+        ></span>
+        <span
+          (click)="handlePriorityClick(2)"
+          [ngClass]="{ active: priority.value === 2 }"
+          class="priority"
+        ></span>
+        <span
+          (click)="handlePriorityClick(3)"
+          [ngClass]="{ active: priority.value === 3 }"
+          class="priority"
+        ></span>
+      </div>
+    </div>
+    <div class="options">
+      <button class="cancel" (click)="todoForm.reset()" type="button">
+        Cancel
+      </button>
+      <button>Submit</button>
+    </div>
+  </form>
+</div>

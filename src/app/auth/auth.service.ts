@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 import { AlertService } from '../shared/alerts/alert.service';
 
 interface User {
@@ -24,6 +24,10 @@ interface TokenUser {
 
 interface UserResponse {
   user: TokenUser;
+}
+
+interface PhotoResponse {
+  image: string;
 }
 
 @Injectable({
@@ -49,7 +53,7 @@ export class AuthService {
         of(err).pipe(
           tap(() => {
             this.user$.next(false);
-            this.alertService.addAlert('User authorization failed', 'error');
+            this.alertService.addAlert(err.error.msg, 'error');
           })
         )
       )
@@ -69,7 +73,7 @@ export class AuthService {
           of(err).pipe(
             tap(() => {
               this.user$.next(false);
-              this.alertService.addAlert('User authorization failed', 'error');
+              this.alertService.addAlert(err.error.msg, 'error');
             })
           )
         )
@@ -89,7 +93,7 @@ export class AuthService {
           of(err).pipe(
             tap(() => {
               this.user$.next(false);
-              this.alertService.addAlert('User login failed', 'error');
+              this.alertService.addAlert(err.error.msg, 'error');
             })
           )
         )
@@ -103,6 +107,19 @@ export class AuthService {
         this.user$.next(null);
         this.alertService.addAlert('User logged out', 'success');
       })
+    );
+  }
+
+  upload(data: any) {
+    return this.http.post<PhotoResponse>(`${this.baseUrl}/uploads`, data).pipe(
+      catchError((err) =>
+        of(err).pipe(
+          tap(() => {
+            this.user$.next(false);
+            this.alertService.addAlert(err.error.msg, 'error');
+          })
+        )
+      )
     );
   }
 }

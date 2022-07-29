@@ -14,7 +14,7 @@ export class TodoResolverService implements Resolve<TodosResponse> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const { type } = route.params;
 
-    if (!type) return this.todoService.getAllTodos();
+    if (type === 'all') return this.todoService.getAllTodos();
     return this.todoService.getTodosByType(type);
   }
 }

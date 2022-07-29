@@ -1,7 +1,12 @@
 <div class="list">
+  <router-outlet></router-outlet>
   <div class="wrapper">
     <ng-container *ngFor="let todo of todos">
       <app-todo [todo]="todo"></app-todo>
     </ng-container>
+    <a class="create" routerLink="create">
+      <img src="/assets/create.png" alt="create" />
+    </a>
+    <div class="notodo" *ngIf="!todos.length">No todos added</div>
   </div>
 </div>

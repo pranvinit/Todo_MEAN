@@ -1,0 +1,72 @@
+@import "../../../partials/mixins";
+@import "../../../partials/variables";
+
+.wrapper {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .formInput,
+  .formTextarea {
+    width: 300px;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    transition: 0.25s ease-in;
+  }
+
+  .formTextarea {
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 10px;
+    resize: vertical;
+  }
+
+  .small {
+    width: 200px;
+  }
+  .large {
+    width: 400px;
+  }
+
+  input[type="checkbox"] {
+    width: inherit;
+    transform: scale(1.5) translate(25%, 10%);
+    cursor: pointer;
+  }
+
+  .formInput:focus,
+  .formTextarea:focus {
+    border-color: #1ca0f2;
+  }
+
+  .loader {
+    display: none;
+    @include loader(20px);
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .pending + .loader {
+    display: block;
+  }
+
+  .errors {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .error {
+      color: #cc0000;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}

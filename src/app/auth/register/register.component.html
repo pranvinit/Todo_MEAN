@@ -1,1 +1,51 @@
-<p>register works!</p>
+<div class="register">
+  <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <h2>Register</h2>
+    <div class="top">
+      <label class="photoLabel" for="photo"
+        ><img
+          [src]="getPhotoUrl()"
+          [ngClass]="{ user: this.photo }"
+          alt="avatar"
+      /></label>
+      <input
+        id="photo"
+        type="file"
+        class="photo"
+        (change)="handleFileChange($event)"
+      />
+      <app-form-input
+        [control]="name"
+        type="text"
+        placeholder="Name"
+        size="small"
+      ></app-form-input>
+    </div>
+    <app-form-input
+      [control]="email"
+      type="email"
+      placeholder="Email"
+    ></app-form-input>
+    <app-form-input
+      [control]="password"
+      type="password"
+      placeholder="Password"
+    ></app-form-input>
+    <app-form-input
+      [control]="passwordConfirm"
+      type="password"
+      placeholder="Password Again"
+    ></app-form-input>
+    <div class="formErrors" *ngIf="registerForm.errors">
+      <span class="error" *ngIf="registerForm.errors['passwordsDontMatch']">
+        Passwords do not match
+      </span>
+    </div>
+    <div class="options">
+      <button class="cancel" type="button" (click)="registerForm.reset()">
+        Cancel
+      </button>
+      <button [disabled]="loading">Submit</button>
+    </div>
+  </form>
+</div>

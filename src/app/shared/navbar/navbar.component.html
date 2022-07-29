@@ -1,10 +1,19 @@
 <div class="navbar">
-  <img
-    (click)="handleLogoClick()"
-    src="/assets/logo.png"
-    alt="logo"
-    class="logo"
-  />
+  <div class="left">
+    <img
+      (click)="handleLogoClick()"
+      src="/assets/logo.png"
+      alt="logo"
+      class="logo"
+    />
+    <img
+      *ngIf="user && user.photo"
+      [src]="user.photo"
+      [alt]="user.name"
+      class="photo"
+    />
+    <span *ngIf="user && user.name">{{ user.name }}</span>
+  </div>
   <ul class="navList">
     <li>
       <a

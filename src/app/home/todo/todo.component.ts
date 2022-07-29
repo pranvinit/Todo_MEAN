@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Todo } from '../todo.service';
+import { Todo, TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -11,7 +11,7 @@ export class TodoComponent implements OnInit {
 
   expanded = false;
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
   getPriorityClass() {
     switch (this.todo.priority) {
@@ -27,6 +27,14 @@ export class TodoComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+  handleDelete() {
+    this.todoService.deleteTodo(this.todo._id).subscribe({
+      next: () => {
+        window.location.reload();
+      },
+    });
   }
 
   ngOnInit(): void {}

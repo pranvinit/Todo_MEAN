@@ -7,6 +7,8 @@ import { ListComponent } from './list/list.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { HomeComponent } from './home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -15,6 +17,6 @@ import { HomeComponent } from './home/home.component';
     TodoFormComponent,
     HomeComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule],
+  imports: [CommonModule, HomeRoutingModule, ReactiveFormsModule, SharedModule],
 })
 export class HomeModule {}

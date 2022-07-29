@@ -1,7 +1,11 @@
+:host {
+  min-height: calc(100vh - 200px);
+}
+
 .home {
   display: flex;
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 200px);
 }

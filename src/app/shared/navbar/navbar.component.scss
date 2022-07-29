@@ -22,6 +22,24 @@
     margin-left: 20px;
   }
 
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    & > span {
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+  }
+
   .navList {
     @extend %list-reset;
     margin-right: 20px;

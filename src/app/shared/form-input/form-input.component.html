@@ -1,1 +1,46 @@
-<p>form-input works!</p>
+<div class="wrapper">
+  <input
+    class="formInput"
+    *ngIf="type !== 'textarea'"
+    [ngClass]="{ pending: control.pending }"
+    [type]="type"
+    [checked]="checked"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [ngClass]="size"
+  />
+  <textarea
+    class="formTextarea"
+    *ngIf="type === 'textarea'"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [ngClass]="size"
+    rows="5"
+  ></textarea>
+  <span class="loader"></span>
+  <div
+    class="errors"
+    *ngIf="control.invalid && (control.dirty || control.touched)"
+  >
+    <span class="error" *ngIf="control.errors?.['required']">
+      Please provide a {{ placeholder }}
+    </span>
+    <span class="error" *ngIf="control.errors?.['emailNotUnique']">
+      Please provide a unique email
+    </span>
+    <span class="error" *ngIf="control.errors?.['email']">
+      Please provide a vaild email
+    </span>
+    <span class="error" *ngIf="control.errors?.['minlength']">
+      {{ placeholder }} must be atleast
+      {{control.errors?.['minlength'].requiredLength}} characters
+    </span>
+    <span class="error" *ngIf="control.errors?.['maxlength']">
+      {{ placeholder }} can be atmost
+      {{control.errors?.['maxlength'].requiredLength}} characters
+    </span>
+    <span class="error" *ngIf="control.errors?.['pattern']">
+      {{ placeholder }} must contain atleast one character and one number
+    </span>
+  </div>
+</div>

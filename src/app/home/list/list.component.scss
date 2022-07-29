@@ -8,5 +8,37 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    .create {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      position: fixed;
+      top: 80%;
+      right: 15%;
+      background-color: hsl(203, 89%, 53%);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s linear;
+
+      &:hover {
+        background-color: hsl(203, 89%, 43%);
+      }
+
+      & > img {
+        width: 50%;
+      }
+    }
+
+    .notodo {
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3em;
+      font-weight: 600;
+    }
   }
 }

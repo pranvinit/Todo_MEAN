@@ -30,7 +30,6 @@ export class TodoService {
       tap(() =>
         this.alertService.addAlert('All todos fetched successfully', 'success')
       ),
-      tap((v) => console.log(v)),
       catchError((err) =>
         of(err).pipe(
           tap(() => this.alertService.addAlert('Todo fetching failed', 'error'))
@@ -87,7 +86,7 @@ export class TodoService {
       );
   }
 
-  deleteTodo(id: number) {
+  deleteTodo(id: string) {
     return this.http.delete(`${this.baseUrl}/todos/${id}`).pipe(
       tap(() =>
         this.alertService.addAlert('Todos deleted successfully', 'success')

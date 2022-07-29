@@ -1,7 +1,9 @@
 <div class="todo">
   <div class="top">
     <span class="priority" [ngClass]="getPriorityClass()"></span>
-    <span class="name">{{ todo.name }}</span>
+    <span class="name" [ngClass]="{ completed: todo.completed }">{{
+      todo.name
+    }}</span>
     <span class="expand" (click)="expanded = !expanded">
       <img
         [ngClass]="{ inverted: expanded }"
@@ -16,7 +18,9 @@
     </span>
     <div class="options">
       <span class="option"><img src="/assets/edit.png" alt="edit" /></span>
-      <span class="option"><img src="/assets/delete.png" alt="delete" /></span>
+      <span (click)="handleDelete()" class="option"
+        ><img src="/assets/delete.png" alt="delete"
+      /></span>
     </div>
   </div>
   <div class="bottom">

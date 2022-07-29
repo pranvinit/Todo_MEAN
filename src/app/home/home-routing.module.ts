@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { TodoResolverService } from './resolvers/todo-resolver.service';
+import { TodoFormComponent } from './todo-form/todo-form.component';
 
 const routes: Routes = [
   {
@@ -13,13 +14,16 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: ListComponent,
-        resolve: { data: TodoResolverService },
+        redirectTo: 'all',
       },
       {
         path: ':type',
         component: ListComponent,
         resolve: { data: TodoResolverService },
+        children: [
+          { path: 'create', component: TodoFormComponent },
+          { path: 'edit', component: TodoFormComponent },
+        ],
       },
     ],
   },

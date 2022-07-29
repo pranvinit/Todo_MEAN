@@ -1,12 +1,12 @@
 .todo {
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 60%;
   margin: 0 auto;
-  background-color: rgb(245, 245, 245);
+  background-color: #f5f5f5;
 
   .top {
     display: flex;
@@ -34,6 +34,9 @@
       margin-left: 20px;
       font-size: 1.3em;
       font-weight: 700;
+    }
+    .completed {
+      text-decoration: line-through;
     }
 
     .expand {
@@ -86,6 +89,10 @@
         justify-content: center;
         background-color: hsl(188, 89%, 93%);
         cursor: pointer;
+
+        &:nth-child(2) {
+          background-color: hsl(5, 81%, 93%);
+        }
 
         & > img {
           width: 20px;
