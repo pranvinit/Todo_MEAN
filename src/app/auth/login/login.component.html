@@ -11,11 +11,16 @@
       type="password"
       placeholder="Password"
     ></app-form-input>
-    <div class="options">
-      <button class="cancel" type="button" (click)="signinForm.reset()">
-        Cancel
-      </button>
-      <button [disabled]="loading">Submit</button>
+    <div class="bottom">
+      <div class="options">
+        <button class="cancel" type="button" (click)="signinForm.reset()">
+          Cancel
+        </button>
+        <button [disabled]="loading || !signinForm.valid">Submit</button>
+      </div>
+      <div class="demo">
+        <button (click)="handleDemo()" [disabled]="loading">Demo</button>
+      </div>
     </div>
   </form>
 </div>

@@ -34,6 +34,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  handleDemo() {
+    this.signinForm.setValue({ email: 'demo@gmail.com', password: 'secret21' });
+    this.handleSubmit();
+  }
+
   get email() {
     return this.signinForm.controls.email;
   }

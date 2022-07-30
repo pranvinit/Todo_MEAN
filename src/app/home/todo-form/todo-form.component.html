@@ -24,11 +24,11 @@
     <div class="bottom">
       <div class="status">
         <span>Status:</span>
-        <app-form-input
-          [control]="completed"
+        <input
           type="checkbox"
-          [checked]="false"
-        ></app-form-input>
+          [checked]="completed.value"
+          (change)="handleCheckbox($event)"
+        />
       </div>
       <div class="priorityWrapper">
         <span
@@ -54,10 +54,12 @@
       </div>
     </div>
     <div class="options">
-      <button class="cancel" (click)="todoForm.reset()" type="button">
+      <button class="cancel" (click)="handleCancel()" type="button">
         Cancel
       </button>
-      <button>Submit</button>
+      <button>
+        {{ operation.charAt(0).toUpperCase() + operation.slice(1) }}
+      </button>
     </div>
   </form>
 </div>

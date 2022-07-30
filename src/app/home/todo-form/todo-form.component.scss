@@ -13,6 +13,7 @@
   .todoForm {
     position: relative;
     width: 40%;
+    min-width: 450px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -31,6 +32,12 @@
       to {
         transform: translateY(0);
       }
+    }
+
+    input[type="checkbox"] {
+      width: inherit;
+      transform: scale(1.5) translate(25%, 10%);
+      cursor: pointer;
     }
 
     .close {

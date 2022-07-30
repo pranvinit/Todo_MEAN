@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Todo, TodoService } from '../todo.service';
 
 @Component({
@@ -10,8 +11,14 @@ export class TodoComponent implements OnInit {
   @Input() todo: Todo;
 
   expanded = false;
+  deleteIntent = false;
+  updateIntent = false;
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   getPriorityClass() {
     switch (this.todo.priority) {
@@ -34,6 +41,15 @@ export class TodoComponent implements OnInit {
       next: () => {
         window.location.reload();
       },
+    });
+  }
+
+  handleEdit() {
+    const { type } = this.route.snapshot.params;
+    console.log(this.todo);
+
+    this.router.navigateByUrl(`/home/${type}/edit`, {
+      state: { todo: this.todo },
     });
   }
 

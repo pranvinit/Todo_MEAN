@@ -20,6 +20,7 @@ const routes: Routes = [
         path: ':type',
         component: ListComponent,
         resolve: { data: TodoResolverService },
+        runGuardsAndResolvers: 'always',
         children: [
           { path: 'create', component: TodoFormComponent },
           { path: 'edit', component: TodoFormComponent },

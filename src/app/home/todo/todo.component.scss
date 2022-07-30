@@ -55,8 +55,10 @@
 
       & > img {
         width: 30px;
+        transition: 0.2s linear;
       }
-      .inverted {
+
+      & > img.up {
         transform: rotate(180deg);
       }
     }
@@ -81,6 +83,7 @@
       gap: 10px;
 
       .option {
+        position: relative;
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -96,6 +99,65 @@
 
         & > img {
           width: 20px;
+        }
+
+        .actionIntent {
+          padding: 20px;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          position: absolute;
+          left: 20px;
+          top: 20px;
+          background-color: #fff;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          z-index: 99;
+          animation: pop-out 0.2s ease-out;
+
+          @keyframes pop-out {
+            from {
+              transform: scale(0.75);
+            }
+            to {
+              transform: scale(1);
+            }
+          }
+
+          .intentOptions {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            button {
+              width: 80px;
+              padding: 5px 10px;
+              border: none;
+              border-radius: 20px;
+              font-size: 0.9em;
+              font-weight: 700;
+              cursor: pointer;
+              background-color: #1ca0f2;
+              color: #fff;
+              transition: 0.2s;
+              &:hover {
+                background-color: #0b7bc1;
+              }
+
+              &:disabled {
+                cursor: not-allowed;
+              }
+            }
+
+            .cancel {
+              background-color: red;
+              &:hover {
+                background-color: #cc0000;
+              }
+            }
+          }
         }
       }
     }

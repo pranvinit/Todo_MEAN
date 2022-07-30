@@ -33,12 +33,6 @@
     width: 400px;
   }
 
-  input[type="checkbox"] {
-    width: inherit;
-    transform: scale(1.5) translate(25%, 10%);
-    cursor: pointer;
-  }
-
   .formInput:focus,
   .formTextarea:focus {
     border-color: #1ca0f2;

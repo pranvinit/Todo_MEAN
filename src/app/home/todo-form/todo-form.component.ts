@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Todo, TodoService } from '../todo.service';
 
 @Component({
@@ -25,7 +27,12 @@ export class TodoFormComponent implements OnInit {
     }),
   });
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
   get name() {
     return this.todoForm.controls.name;
@@ -44,15 +51,22 @@ export class TodoFormComponent implements OnInit {
     this.priority.setValue(priority);
   }
 
+  handleCheckbox(e: any) {
+    const { checked } = e.target as HTMLInputElement;
+    this.completed.setValue(checked);
+  }
+
   backIntent = false;
 
   handleBack() {
     this.backIntent = true;
     setTimeout(() => {
-      const url = window.location.pathname.split('/');
-      url.pop();
-      window.location.replace(url.join('/'));
+      this.location.back();
     }, 300);
+  }
+
+  handleCancel() {
+    this.location.back();
   }
 
   handleSubmit() {
@@ -70,8 +84,35 @@ export class TodoFormComponent implements OnInit {
           this.loading = false;
         },
       });
+    } else if (this.operation === 'update') {
+      this.todoService.updateTodo({ ...this.todo, ...value }).subscribe({
+        next: () => {
+          this.todoForm.reset();
+          this.loading = false;
+          this.handleBack();
+        },
+        error: () => {
+          this.loading = false;
+        },
+      });
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const { todo } = history.state;
+    const { path } = this.route.snapshot.routeConfig;
+
+    if (todo?._id) {
+      this.todo = todo;
+      this.operation = 'update';
+      this.todoForm.patchValue({
+        name: todo.name || '',
+        description: todo.description || '',
+        completed: !!todo.completed,
+        priority: todo.priority || 0,
+      });
+    } else if (path === 'edit' && !todo) {
+      this.router.navigateByUrl('/home');
+    }
+  }
 }

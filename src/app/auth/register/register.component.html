@@ -45,7 +45,7 @@
       <button class="cancel" type="button" (click)="registerForm.reset()">
         Cancel
       </button>
-      <button [disabled]="loading">Submit</button>
+      <button [disabled]="loading || !registerForm.valid">Submit</button>
     </div>
   </form>
 </div>

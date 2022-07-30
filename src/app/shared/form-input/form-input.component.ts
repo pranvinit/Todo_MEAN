@@ -10,7 +10,6 @@ export class FormInputComponent implements OnInit {
   @Input() control: FormControl;
   @Input() type = 'text';
   @Input() placeholder: string;
-  @Input() checked: boolean;
   @Input() size: string;
   constructor() {}
 

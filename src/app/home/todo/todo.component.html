@@ -5,11 +5,7 @@
       todo.name
     }}</span>
     <span class="expand" (click)="expanded = !expanded">
-      <img
-        [ngClass]="{ inverted: expanded }"
-        src="/assets/down.png"
-        alt="expand"
-      />
+      <img [ngClass]="{ up: expanded }" src="/assets/down.png" alt="expand" />
     </span>
   </div>
   <div class="center" *ngIf="expanded">
@@ -17,10 +13,30 @@
       {{ todo.description }}
     </span>
     <div class="options">
-      <span class="option"><img src="/assets/edit.png" alt="edit" /></span>
-      <span (click)="handleDelete()" class="option"
-        ><img src="/assets/delete.png" alt="delete"
-      /></span>
+      <span (click)="updateIntent = true" class="option"
+        ><img src="/assets/edit.png" alt="edit" />
+        <div (click)="$event.stopPropagation()">
+          <div class="actionIntent" *ngIf="updateIntent">
+            <span>Update this todo?</span>
+            <div class="intentOptions">
+              <button class="cancel" (click)="updateIntent = false">No</button>
+              <button (click)="handleEdit()">Yes</button>
+            </div>
+          </div>
+        </div>
+      </span>
+      <span (click)="deleteIntent = true" class="option"
+        ><img src="/assets/delete.png" alt="delete" />
+        <div (click)="$event.stopPropagation()">
+          <div class="actionIntent" *ngIf="deleteIntent">
+            <span>Delete this todo?</span>
+            <div class="intentOptions">
+              <button class="cancel" (click)="deleteIntent = false">No</button>
+              <button (click)="handleDelete()">Yes</button>
+            </div>
+          </div>
+        </div>
+      </span>
     </div>
   </div>
   <div class="bottom">
