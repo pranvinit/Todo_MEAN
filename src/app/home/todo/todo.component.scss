@@ -117,10 +117,10 @@
 
           @keyframes pop-out {
             from {
-              transform: scale(0.75);
+              transform: scale(0.75) translate(0);
             }
             to {
-              transform: scale(1);
+              transform: scale(1) translate(0);
             }
           }
 
